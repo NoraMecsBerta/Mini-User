@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mini-user-app</title>
+        <link rel="stylesheet" href="../../resources/public/css/main.css"/>
+    </head>
+    <body>
+        <div id="registrationField">
+            <form action="/addUser" method="post">
+                <div class="container">
+                    <h3>Add new user here: </h3>
+                    <input type="text" id ="name" placeholder="User name" required>
+                    <input type="text" id="mail" placeholder="Email" required>
+                    <button type="submit">Add to database</button>
+                </div>
+            </form>
+        </div>
+        <script src="../../resources/public/js/main.js"></script>
+    </body>
 </html>

@@ -1,0 +1,30 @@
+.registrationField {
+    display: inline-block;
+    margin-top:5px;
+    margin-bottom:10px;
+    padding:10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h3{
+    font-family:'Ubuntu',sans-serif;
+    font-size: 15px;
+    color: dimgray;
+}
+input[type="text"]{
+    width:39%;
+    border:1px solid #2BC1F2
+}
+
+button{
+    width:19%;
+    background-color:white;
+    border:1px solid dimgray;
+    color:dimgray;
+    font-weight:100;
+    cursor:pointer;
+}
+hr{
+    margin-top:20px;
+    color:grey;
+}
