@@ -3,7 +3,7 @@ package probation.miniuser.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Mini-users")
+@Table(name = "Miniusers")
 public class User {
 
     @Id
@@ -12,6 +12,7 @@ public class User {
     private String userName;
     private String eMailAddress;
 
+    public User(){}
 
     public User(String userName, String eMailAddress) {
         this.userName = userName;
