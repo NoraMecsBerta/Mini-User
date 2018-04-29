@@ -30,10 +30,25 @@ hr{
 }
 
 #tableDiv {
-    margin-top:100px;
+    margin-top:50px;
 }
 
 table.usersTable {
     width: 100%;
-    background-color: #2BC1F2;
+    background-color: white;
+    border:1px solid dimgray;
+    font-family:'Ubuntu',sans-serif;
+    font-size: 12px;
+    font-color: dimgray;
+    text-align: center;
+}
+
+
+thead {
+    background-color: rgba(43, 193, 242, 0.63);
+    border: 1px solid dimgray;
+}
+
+td {
+    border: 1px solid dimgray;
 }

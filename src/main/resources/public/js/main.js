@@ -1,3 +1,4 @@
+$( document ).ready(getAllUsers());
 
 $('button').on("click", function(e){
     addUser();
@@ -59,7 +60,7 @@ function getAllUsers() {
 
 
 function makeTable(data) {
-    var table = $(`<table width="100%" border="1px solid dimgray" font-family="Ubuntu, sans-serif">`).addClass('usersTable');
+    var table = $("<table>").addClass('usersTable');
     $('#tableDiv').html("");
     $('#tableDiv').append(table);
     var thead = $('<thead/>').appendTo(table);
@@ -75,6 +76,23 @@ function makeTable(data) {
         tr.append('<td>' + user.id + '</td>');
         tr.append('<td>' + user.name + '</td>');
         tr.append('<td>' + user.email + '</td>');
-        tr.append(`<td><i class="fa fa-trash" id=user.id></i></td>`);
+        tr.append(`<td><i class="fa fa-trash" data-userid=${user.id}></i></td>`);
     }
+    //maybe put to a seperate event listener function
+    $('.fa-trash').on("click", function(e){
+        var userId = $(this).data("userid");
+        console.log("userid: " + userId);
+        deleteUser(userId);
+    });
+}
+
+function deleteUser(userId) {
+    $.ajax({
+        type: 'DELETE',
+        url: "delete/" + userId,
+        success: function () {
+            alert("success");
+            getAllUsers();
+        }
+    })
 }
