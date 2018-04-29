@@ -1,34 +1,29 @@
 $( document ).ready(getAllUsers());
 
-$('button').on("click", function(e){
+
+$('#buttonOfAddUser').on("click", function(e){
     addUser();
 });
 
 
 function addUser() {
-
-    if ($('#userName').val() !== '' || $('#email').val() !== '') {
+    if (checkInputFields()) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
             url: "/addUser",
-            //dataType: "json",
             data: formToJSON(),
-            /*complete: function() { that worked anyway*/
             success: function () {
-                alert("success");
-                clearInputField();
+                alert("You successfully added the new user!");
+                clearInputFields();
                 getAllUsers();
             },
             error: function () {
-                alert("not managed")
+                alert("Oops! Not managed to add new user!")
             }
         });
-    } else {
-        alert("must fill both field!")
     }
 }
-
 
 function formToJSON() {
     var json = {
@@ -39,10 +34,11 @@ function formToJSON() {
 }
 
 
-function clearInputField() {
+function clearInputFields() {
     $('#email').val('');
     $('#userName').val('');
 }
+
 
 function getAllUsers() {
     $.ajax({
@@ -51,17 +47,20 @@ function getAllUsers() {
         url: "/getAllUsers",
         dataType: "json",
         success: function (data) {
-            alert("success");
             console.log(data);
-            makeTable(data);
+            displayUsersTable(data);
+        },
+        //maybe on server side
+        error: function() {
+            alert("Oops, something unexpected happened. Can't display users!");
         }
     })
 }
 
 
-function makeTable(data) {
-    var table = $("<table>").addClass('usersTable');
+function displayUsersTable(data) {
     $('#tableDiv').html("");
+    var table = $("<table>").addClass('usersTable');
     $('#tableDiv').append(table);
     var thead = $('<thead/>').appendTo(table);
     thead.append('<td>ID</td>');
@@ -91,8 +90,26 @@ function deleteUser(userId) {
         type: 'DELETE',
         url: "delete/" + userId,
         success: function () {
-            alert("success");
             getAllUsers();
+            alert("You successfully delete the user!");
+        },
+        error: function () {
+            alert("Not managed to delete this user!")
         }
     })
+}
+
+function checkInputFields() {
+    var emailAddress = $("#email").val();
+
+    if ($('#userName').val() === '' || $('#email').val() === '') {
+        alert("Must fill both fields");
+        return false;
+    }
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (regex.test(emailAddress) !== true) {
+        alert("Not valid email address!");
+        clearInputFields();
+    }
+    return regex.test(emailAddress);
 }
