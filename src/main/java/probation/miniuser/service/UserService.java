@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import probation.miniuser.model.User;
 import probation.miniuser.repository.UserRepository;
 
+import java.util.List;
+
 
 @Service
 public class UserService {
@@ -18,6 +20,10 @@ public class UserService {
 
     public void addUser(User newUser) {
         userRepository.save(newUser);
+    }
+
+    public List<User> getAllUser() {
+        return userRepository.findAll();
     }
 
 }
