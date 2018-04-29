@@ -11,8 +11,9 @@ h3{
     font-size: 15px;
     color: dimgray;
 }
+
 input[type="text"]{
-    width:39%;
+    width:41%;
     border:1px solid #2BC1F2
 }
 
@@ -24,13 +25,9 @@ button{
     font-weight:100;
     cursor:pointer;
 }
-hr{
-    margin-top:20px;
-    color:grey;
-}
 
 #tableDiv {
-    margin-top:50px;
+    margin-top:30px;
 }
 
 table.usersTable {
@@ -42,7 +39,6 @@ table.usersTable {
     font-color: dimgray;
     text-align: center;
 }
-
 
 thead {
     background-color: rgba(43, 193, 242, 0.63);

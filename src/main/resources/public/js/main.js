@@ -33,12 +33,10 @@ function formToJSON() {
     return JSON.stringify(json);
 }
 
-
 function clearInputFields() {
     $('#email').val('');
     $('#userName').val('');
 }
-
 
 function getAllUsers() {
     $.ajax({
@@ -56,7 +54,6 @@ function getAllUsers() {
         }
     })
 }
-
 
 function displayUsersTable(data) {
     $('#tableDiv').html("");
