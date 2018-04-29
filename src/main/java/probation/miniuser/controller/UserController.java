@@ -25,36 +25,5 @@ public class UserController {
         return "index";
     }
 
-    //maybe this should be in an api
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public ResponseEntity createNewUser(@RequestBody Map<String, String> rb) {
-        String userName = rb.get("name");
-        String email = rb.get("email");
-        //missing error handling when not managed to persist the data
-        userService.addUser(new User(userName, email));
-        return new ResponseEntity(HttpStatus.OK);
-    }
 
-
-    @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
-    public ResponseEntity listAllUsers() {
-        List<User> users = userService.getAllUser();
-        JSONArray jsonArrayOfUsers = new JSONArray();
-        for (User user : users) {
-            System.out.println(user.toString());
-            JSONObject jsonObjectOfUser = new JSONObject();
-            jsonObjectOfUser.put("id", user.getId());
-            jsonObjectOfUser.put("name", user.getUserName());
-            jsonObjectOfUser.put("email", user.geteMailAddress());
-            jsonArrayOfUsers.put(jsonObjectOfUser);
-        }
-        System.out.println(jsonArrayOfUsers.toString());
-        return new ResponseEntity<>(jsonArrayOfUsers.toString(), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity delete(@PathVariable("id") int id) {
-        userService.deleteById(id);
-        return new ResponseEntity(HttpStatus.OK);
-    }
 }
