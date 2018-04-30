@@ -4,26 +4,37 @@
     margin-bottom:10px;
     padding:50px;
     font-family: 'Ubuntu', sans-serif;
+    font-color: dimgray;
 }
 
 h3{
     font-family:'Ubuntu',sans-serif;
     font-size: 15px;
     color: dimgray;
+    margin-top: 30px;
 }
 
 input[type="text"]{
     width:39%;
-    border:1px solid #2BC1F2
+    border:1px solid #2BC1F2;
+    font-family:'Ubuntu',sans-serif;
+
 }
 
-button{
+#buttonOfAddUser, #loginUser {
     width:20%;
     background-color:white;
     border:1px solid dimgray;
     color:dimgray;
+    font-family:'Ubuntu',sans-serif;
     font-weight:100;
     cursor:pointer;
+}
+
+#buttonOfLogOut {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 #tableDiv {
@@ -43,8 +54,17 @@ table.usersTable {
 thead {
     background-color: rgba(43, 193, 242, 0.63);
     border: 1px solid dimgray;
+    font-color: dimgray;
+
 }
 
 td {
     border: 1px solid dimgray;
+    font-color: dimgray;
+}
+
+a {
+    font-family:'Ubuntu',sans-serif;
+    color: #2BC1F2;
+    font-weight: lighter;
 }
